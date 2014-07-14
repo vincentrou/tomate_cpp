@@ -80,7 +80,17 @@ SubdRepresentation::SubdRepresentation(Rectangle rect, Crop* p_crop, QDate date)
         //text = re.sub("\s+", "\n", text)
         QGraphicsSimpleTextItem *textw =  new QGraphicsSimpleTextItem(text);
         QFont font = textw->font();
-        font.setPointSize(int(this->boundingRect().width()/10));
+
+        double smallest_length;
+        if(this->boundingRect().width() > this->boundingRect().height())
+        {
+            smallest_length = this->boundingRect().height()/3;
+        }
+        else
+        {
+            smallest_length = this->boundingRect().width()/6;
+        }
+        font.setPointSize(int(smallest_length));
         font.setWeight(25);
         textw->setFont(font);
         center_text(textw, this->boundingRect());

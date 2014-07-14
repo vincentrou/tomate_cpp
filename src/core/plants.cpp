@@ -43,7 +43,8 @@ Plant& Plants::add_plant(string key, string name)
 {
     if (key == "")
     {
-        key = to_string(size());
+        int n_key = stoi(back().get_key())+1;
+        key = to_string(n_key);
     }
     if (get_pplant(key))
     {
